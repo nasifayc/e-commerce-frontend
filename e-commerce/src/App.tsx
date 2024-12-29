@@ -1,5 +1,8 @@
-function App() {
-  return <h1 className="text-red-500">Yegna E-commerce</h1>;
-}
+import React from "react";
+import AuthForm from "./components/AuthForm";
+
+const App: React.FC = () => {
+  return <AuthForm />;
+};
 
 export default App;
