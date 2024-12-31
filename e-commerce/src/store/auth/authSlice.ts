@@ -24,6 +24,7 @@ const authSlice = createSlice({
       state,
       action: PayloadAction<{ user: User; accessToken: string }>
     ) => {
+      console.log("settting data ... ", action.payload.accessToken);
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
     },
