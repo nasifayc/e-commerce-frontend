@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import useAuthForm from "../hooks/useAuthForm";
 
 const AuthForm: React.FC = () => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const { register, handleSubmit, errors, loading, onSubmit } =
     useAuthForm(isSignUp);
 
@@ -23,12 +23,14 @@ const AuthForm: React.FC = () => {
               <label className="block text-sm font-medium mb-1">Name</label>
               <input
                 type="text"
-                {...register("name")}
+                {...register("username")}
                 className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               {/* Type-safe access of errors.name */}
-              {"name" in errors && errors.name && (
-                <p className="text-sm text-red-600">{errors.name.message}</p>
+              {"username" in errors && errors.username && (
+                <p className="text-sm text-red-600">
+                  {errors.username.message}
+                </p>
               )}
             </div>
           )}

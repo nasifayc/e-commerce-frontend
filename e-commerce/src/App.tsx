@@ -4,6 +4,7 @@ import ProtectedRoute from "./routes/ProtectedRoutes";
 import AuthForm from "./components/AuthForm";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import OtpPage from "./pages/OtpPage";
 
 const App: React.FC = () => {
   return (
@@ -12,12 +13,9 @@ const App: React.FC = () => {
         <Route path="/" element={<ProtectedRoute element={<Home />} />} />
         <Route path="/login" element={<AuthForm />} />
         {/* Protected route for user */}
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute element={<Cart />} /> // Only allowed if accessToken exists
-          }
-        />
+
+        <Route path="/verify-otp" element={<OtpPage />} />
+        <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
       </Routes>
     </Router>
   );

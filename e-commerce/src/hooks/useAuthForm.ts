@@ -4,11 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import axios from "axios";
 import { AxiosError } from "axios";
-import { toast } from "react-toastify";
+import { notify } from "../components/Toast";
 import useApiCall from "./useApiCall";
+import { ValidationError } from "../interface/User";
 
 const signUpSchema = z.object({
-  name: z.string().min(4, "Name must be at least 4 characters."),
+  username: z.string().min(4, "Username must be at least 4 characters."),
   email: z.string().email("Invalid email address."),
   password: z.string().min(6, "Password must be at least 6 characters."),
 });
@@ -34,15 +35,6 @@ const useAuthForm = (isSignUp: boolean) => {
   });
 
   const { apiCall } = useApiCall(isSignUp);
-
-  interface ValidationError {
-    type: string;
-    value: string | undefined | null;
-    msg: string;
-    path: string;
-    location: string;
-  }
-  const notify = (message: string) => toast(message);
 
   const onSubmit = async (data: SignUpFormData | LoginFormData) => {
     setLoading(true);
